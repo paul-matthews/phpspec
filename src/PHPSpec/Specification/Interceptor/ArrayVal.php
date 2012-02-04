@@ -31,7 +31,7 @@ use PHPSpec\Specification\Interceptor;
  *                                     Marcello Duarte
  * @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU Lesser General Public Licence Version 3
  */
-class ArrayVal extends Interceptor implements \ArrayAccess
+class ArrayVal extends Interceptor implements \ArrayAccess, \Countable
 {
     /**
      * Checks whether actual value has a key
@@ -86,5 +86,18 @@ class ArrayVal extends Interceptor implements \ArrayAccess
         if (isset($this->_actualValue[$offset])) {
             unset($this->_actualValue[$offset]);
         }
+    }
+
+    /**
+     * Returns the count of the actual value rather than the object
+     *
+     * Implements the contable interface
+     *
+     * @see Countable::count()
+     * @return int the count of the value
+     */
+    public function count()
+    {
+        return count($this->_actualValue);
     }
 }
