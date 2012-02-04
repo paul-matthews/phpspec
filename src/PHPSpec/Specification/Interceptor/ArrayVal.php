@@ -45,10 +45,10 @@ class ArrayVal extends Interceptor implements \ArrayAccess
         if (isset($this->_actualValue[$offset])) {
             return true;
         }
-        
+
         return false;
     }
-    
+
     /**
      * Gets the value of existing offset in the actual value
      *
@@ -61,10 +61,10 @@ class ArrayVal extends Interceptor implements \ArrayAccess
         if (! isset($this->_actualValue[$offset])) {
             trigger_error("Undefined index: $offset", E_USER_NOTICE);
         }
-        
+
         return InterceptorFactory::create($this->_actualValue[$offset]);
     }
-    
+
     /**
      * Sets the value for a offset in the actual value
      *
@@ -75,11 +75,11 @@ class ArrayVal extends Interceptor implements \ArrayAccess
     {
         $this->_actualValue[$offset] = $value;
     }
-    
+
     /**
      * Unsets a position in the actual value array
      *
-     * @param mixed $offset 
+     * @param mixed $offset
      */
     public function offsetUnset($offset)
     {
